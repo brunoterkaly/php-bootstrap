@@ -16,7 +16,7 @@
     <![endif]-->
   </head>
   <body>
-    <?php Print "<h1>Hello, World!, from Bruno Terkaly</h1>"; ?> 
+    <?php Print "<h1>Hello, World!, from Bruno Terkaly, continuous integration</h1>"; ?> 
     <div class="container">
 
     <div class="row">
