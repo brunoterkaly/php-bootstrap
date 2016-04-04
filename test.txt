@@ -1,0 +1,1000 @@
+  555  docker inspect my_persist_data > output.txt; vim output.txt
+  556  cd /var/lib/docker/volumes/
+  557  ls
+  558  clear
+  559  docker run --name bruno-mysql -e MYSQL_ROOT_PASSWORD=root-pw volumes-from my_persist_data -d mysql:tag
+  560  clear
+  561  cd ~/php
+  562  docker run --name bruno-mysql -e MYSQL_ROOT_PASSWORD=root-pw volumes-from my_persist_data -d mysql:latest
+  563  clear
+  564  docker run --name bruno-mysql -e MYSQL_ROOT_PASSWORD=root-pw --volumes-from my_persist_data -d mysql:latest
+  565  docker ps
+  566  docker stop 55306ee3f4aff318b044cc53d9820d5c82e735131eff9a2fa34dc5625b232b51 
+  567  docker stop 4656f730fa66de6be5cc405c0f0da424dafa8fb5914aa73198cb1b6409dc7d6e 
+  568  docker ps
+  569  sudo -s
+  570  clear
+  571  docker inspect bruno-mysql > output.txt; vim output.txt
+  572  docker run --link=bruno-mysql:mysql -p 80:80 -d wordpress
+  573  docker ps
+  574  docker run --name bruno-mysql -e MYSQL_ROOT_PASSWORD=root-pw --volumes-from my_persist_data -d mysql:latest
+  575  docker ps
+  576  history
+  577  docker stop $(docker ps -a -q)
+  578  docker run --name bruno-mysql -e MYSQL_ROOT_PASSWORD=root-pw --volumes-from my_persist_data -d mysql:latest
+  579  docker ps -a
+  580  docker ps -a | grep bruno-mysql
+  581  docker rm -f bruno-mysql
+  582  clear
+  583  # You will need to clean up the old container
+  584  docker ps -a | grep bruno-mysql
+  585  # Now delete it
+  586  docker rm -f bruno-mysql
+  587  # You can run mysql now
+  588  docker run --name bruno-mysql -e MYSQL_ROOT_PASSWORD=root-pw --volumes-from my_persist_data -d mysql:latest
+  589  # And run wordpress
+  590  docker run --link=bruno-mysql:mysql -p 80:80 -d wordpress
+  591  docker ps
+  592  history docker stop
+  593  history | grep stop
+  594  clear
+  595  docker ps
+  596  docker stop $(docker ps -a -q)
+  597  clear
+  598  docker ps
+  599  # You will need to clean up the old container
+  600  docker ps -a | grep bruno-mysql
+  601  # Now delete it
+  602  docker rm -f bruno-mysql
+  603  # You can run mysql now
+  604  docker run --name bruno-mysql -e MYSQL_ROOT_PASSWORD=root-pw --volumes-from my_persist_data -d mysql:latest
+  605  # And run wordpress
+  606  docker run --link=bruno-mysql:mysql -p 80:80 -d wordpress
+  607  docker ps
+  608  sudo -s
+  609  cd php
+  610  ls -ltr
+  611  rm output.txt 
+  612  ls -ltr
+  613  rm README.md package.json LICENSE CHANGELOG.md 
+  614  ls -ltr
+  615  clear
+  616  ls -ltr
+  617  echo # php-bootstrap >> README.md
+  618  git init
+  619  git add --all
+  620  git commit -m "first commit"
+  621  git remote add origin https://github.com/brunoterkaly/php-bootstrap.git
+  622  git push -u origin master
+  623  git status
+  624  sudo -s
+  625  clear
+  626  cd php
+  627  docker pull brunoterkaly/php-bootstrap
+  628  history | grep "doc.*php"
+  629  clear
+  630  docker run -d -p 32769:80 my-php-app
+  631  docker ps
+  632  cd src
+  633  vim index.php 
+  634  cd ..
+  635  git add --all
+  636  git commit -m "testing continuous integration" 
+  637  git push -u origin master
+  638  docker stop $(docker ps -a -q)
+  639  clear
+  640  docker ps
+  641  docker run -d -p 32769:80 my-php-app
+  642  clear
+  643  docker pull brunterkaly/php-bootstrap:latest
+  644  clear
+  645  docker pull brunoterkaly/php-bootstrap:latest
+  646  docker run -d -p 32769:80 php-bootstrap
+  647  clear
+  648  docker images | grep my-
+  649  clear
+  650  docker rmi -f my-php-app
+  651  docker images | grep my-
+  652  docker ps
+  653  docker stop $(docker ps -a -q)
+  654  docker run -d -p 32769:80 php-bootstrap
+  655  docker stop $(docker ps -a -q)
+  656  docker ps
+  657  clear
+  658  docker run -d -p 32769:80 php-bootstrap
+  659  docker images
+  660  docker stop $(docker ps -a -q)
+  661  docker images
+  662  docker rmi php-bootstrap
+  663  docker rmi php-bootstrap:latest
+  664  docker -f rmi php-bootstrap:latest
+  665  docker  rmi -f php-bootstrap:latest
+  666  docker images
+  667  clear
+  668  docker run -d -p 32769:80 brunoterkaly/php-bootstrap
+  669  sudo -s
+  670  clear
+  671  docker ps
+  672  docker log sad_snyder
+  673  docker logs sad_snyder
+  674  docker stop $(docker ps -a -q)
+  675  docker run -d -p 32769:80 -v /container/logs/php:/var/logs/php brunoterkaly/php-bootstrap
+  676  cd /container
+  677  ls
+  678  cd logs
+  679  ls
+  680  cd php
+  681  ls
+  682  docker stop $(docker ps -a -q)
+  683  ls
+  684  docker run -d -p 32769:80 -v /container/logs/php:/var/log/apache2 brunoterkaly/php-bootstrap
+  685  cd /container/logs/php
+  686  ls
+  687  docker stop $(docker ps -a -q)
+  688  docker run -d -p 32769:80 -v /container/logs/php:/var/log/apache2 brunoterkaly/php-bootstrap
+  689  docker ps
+  690  docker inspect e9
+  691  docker inspect brunoterkaly/php-bootstrap
+  692  docker inspect brunoterkaly/php-bootstrap > output.txt; vim output.txt
+  693  docker stop $(docker ps -a -q)
+  694  docker run -it -p 32769:80 -v /container/logs/php:/var/log/apache2 brunoterkaly/php-bootstrap
+  695  docker stop $(docker ps -a -q)
+  696  history | grep execute
+  697  docker execute brunoterkaly/php-bootstrap
+  698  docker exec
+  699  docker exec brunoterkaly/php-bootstrap
+  700  docker run -it -p 32769:80 -v /container/logs/php:/var/log/apache2 brunoterkaly/php-bootstrap
+  701  docker ps
+  702  docker run -d -p 32769:80 -v /container/logs/php:/var/log/apache2 brunoterkaly/php-bootstrap
+  703  docker exec brunoterkaly/php-bootstrap
+  704  docker ps
+  705  docker exec 31bc4e4fcf630b372c89ba908113956b911e529831783f619b065ced329b1655 
+  706  docker exec --help
+  707  docker exec -d 31bc4e4fcf630b372c89ba908113956b911e529831783f619b065ced329b1655 
+  708  docker exec -it 31bc4e4fcf630b372c89ba908113956b911e529831783f619b065ced329b1655 
+  709  history | grep "docker exec"
+  710  docker exec -it 31bc4e4fcf630b372c89ba908113956b911e529831783f619b065ced329b1655 bash
+  711  docker ps
+  712  docker stop $(docker ps -a -q)
+  713  docker run -d -p 32769:80 -v /container_logs/nginx:/var/log/nginx brunoterkaly/php-bootstrap
+  714  cd /container_logs/
+  715  ls
+  716  cd nginx/
+  717  ls
+  718  docker ps
+  719  docker stop $(docker ps -a -q)
+  720  cd ~
+  721  docker run -d -p 32769:80 -v /container_logs/nginx:/var/log/nginx nginx
+  722  cd /container_logs/nginx/
+  723  ls
+  724  ls -ltr
+  725  vim *
+  726  ls -ltr
+  727  vim access.log
+  728  cd ~
+  729  clear
+  730  rd -r /container_logs/
+  731  rm -r /container_logs/
+  732  clear
+  733  docker run -d -p 32769:80 -v /container_logs/nginx:/var/log/nginx nginx
+  734  docker ps
+  735  docker stop $(docker ps -a -q)
+  736  clear
+  737  docker run -d -p 32769:80 -v /container_logs/nginx:/var/log/nginx nginx
+  738  cd /container_logs/nginx
+  739  ls
+  740  cat access.log 
+  741  ls -ltr
+  742  cat access.log 
+  743  cd ~
+  744  docker stop $(docker ps -a -q)
+  745  clear
+  746  docker run -d --log-level=debug -p 32769:80 -v /container_logs/nginx:/var/log/nginx nginx
+  747  docker -d --log-level=debug
+  748  clear
+  749  service docker stop
+  750  docker -d --log-level=debug &
+  751  docker images
+  752  ps
+  753  kill -9 44261
+  754  ps
+  755  service docker start
+  756  docker images
+  757  curl
+  758  clear
+  759  # Install curl
+  760  apt-get update && apt-get install -y curl --no-install-recommends
+  761  curl
+  762  curl --help
+  763  clear
+  764  curl -L https://github.com/docker/machine/releases/download/v0.5.3/docker-machine_linux-amd64 >/usr/local/bin/docker-machine &&     chmod +x /usr/local/bin/docker-machine
+  765  docker-machine
+  766  openssl
+  767  clear
+  768  openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
+  769  clear
+  770  openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
+  771  openssl pkcs12 -export -out mycert.pfx -in mycert.pem -name "MyCertificate"
+  772  openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
+  773  ls -ltr
+  774  apt-get update && apt-get install -y ubuntu-desktop --no-install-recommends
+  775  sudo apt-get install xfce4 xrdp
+  776  clear
+  777  apt-get update && apt-get install -y xfce4 xfce4-goodies --no-install-recommends
+  778  clear
+  779  echo xfce4-session
+  780  cd /etc/skel
+  781  cd
+  782  cd ~
+  783  vim /etc/ssh/sshd_config
+  784  clear
+  785  echo xfce4-session > ~/.xsession
+  786  cp /home/ubuntu/.xsession /etc/skel
+  787  cp ~/.xsession /etc/skel
+  788  vim /etc/xrdp/xrdp.ini
+  789  clear
+  790  port=ask
+  791  clear
+  792  vim /etc/xrdp/xrdp.ini
+  793  service xrdp restart
+  794  vim /etc/xrdp/xrdp.ini
+  795  sudo -s
+  796  apt-get update
+  797  clear
+  798  apt-get install -y google-chrome
+  799  apt-get install -y google-chrome-stable
+  800  clear
+  801  sudo -s
+  802  apt-get update
+  803  apt-get install libnss3-1d libxss1
+  804  dpg -i google-chrome-stable_current_i386.deb
+  805  dpkg -i google-chrome-stable_current_i386.deb
+  806  sudo -s
+  807  clear
+  808  apt-get install libxss1 lilbappindicator libindicator7
+  809  apt-get install libxss1 lilbappindicator1 libindicator7
+  810  sudo -s
+  811  whereis google-chrome
+  812  /usr/bin/google-chrome &
+  813  ps 
+  814  kill -0 3791
+  815  kill -0 3779
+  816  ps 
+  817  chrome
+  818  google-chrome
+  819  ps 
+  820  kill -9 3779
+  821  ps
+  822  google-chrome
+  823  ps
+  824  ps -ax
+  825  sudo -s
+  826  apt-get install libxss1 libappindictor1 libindicator7
+  827  apt-get install libxss1 libappindicator1 libindicator7
+  828  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  829  dpkg -i google-chrome*.deb
+  830  chrome
+  831  google-chrome
+  832  whereis google-chrome
+  833  chrome google-chrome
+  834  clear
+  835  apt-get install -f
+  836  google-chrome
+  837  ps
+  838  apt-get install chromium-browser
+  839  docker-machine --version
+  840  curl -L https://github.com/docker/machine/releases/download/v0.5.5/docker-machine_linux-amd64 >/usr/local/bin/docker-machine &&     chmod +x /usr/local/bin/docker-machine
+  841  docker-machine --version
+  842  ls -ltr
+  843  docker-machine_linux-amd64 
+  844  docker-machine_linux-amd64 create  -d azure  --azure-subscription-id="c884f3c1-c74f-4898-9e40-6ebd1e42fa28"  --azure-subscription-cert="mycert.pem"  oreillytestvm
+  845  docker-machine create  -d azure  --azure-subscription-id="c884f3c1-c74f-4898-9e40-6ebd1e42fa28"  --azure-subscription-cert="mycert.pem"  oreillytestvm
+  846  docker-machine create  -d azure  --azure-subscription-id="c884f3c1-c74f-4898-9e40-6ebd1e42fa28"  --azure-subscription-cert="mycert.pem" brunodocker
+  847  docker-machine env brunodocker
+  848  eval $(docker-machine env brunodocker)
+  849  ls -ltr
+  850  clear
+  851  history
+  852  lear
+  853  clear
+  854  docker-machine create  -d azure  --azure-subscription-id="c884f3c1-c74f-4898-9e40-6ebd1e42fa28"  --azure-subscription-cert="mycert.pem" brunodocker
+  855  clear
+  856  docker-machine create  -d azure  --azure-subscription-id="c884f3c1-c74f-4898-9e40-6ebd1e42fa28"  --azure-subscription-cert="mycert.pem" brunodocker
+  857  docker-machine delete
+  858  docker-machine --help
+  859  docker-machine rm brunodocker
+  860  clear
+  861  docker-machine create  -d azure  --azure-subscription-id="c884f3c1-c74f-4898-9e40-6ebd1e42fa28"  --azure-subscription-cert="mycert.pem" brunodocker
+  862  clear
+  863  docker-machine env brunodocker
+  864  env
+  865  ssh brunodocker
+  866  ssh brunodocker.cloudapp.net:2376
+  867  ssh
+  868  docker-machine ls
+  869  clear
+  870  docker-machine ls
+  871  docker-machine ip
+  872  docker-machine ip brunodocker
+  873  docker-machine ssh brunodocker
+  874  clear
+  875  docker-machine ip brunodocker
+  876  docker-machine ssh brunodocker
+  877  azure
+  878  clear
+  879  apt-get install nodejs-legacy
+  880  apt-get install npm
+  881  npm install -g azure-cli
+  882  apt-get --help
+  883  apt-get remove npm
+  884  apt-get install npm
+  885  npm install -g azure-cli
+  886  clear
+  887  apt-get install curl
+  888  curl -sL https://deb.nodesource.com/setup | sudo bash -
+  889  apt-get install -y nodejs
+  890  npm install -g azure-cli
+  891  azure
+  892  azure --help
+  893  azure login
+  894  azure vm list
+  895  clear
+  896  docker-machine ls
+  897  docker-machine env brunodocker
+  898  docker images
+  899  docker pull brunoterkaly/php-bootstrap:latest
+  900  docker images
+  901  clear
+  902  azure vm endpoint
+  903  clear
+  904  azure vm endpoint create
+  905  azure vm endpoint create --help
+  906  clear
+  907  azure vm endpoint create brunodocker 80 32769
+  908  clear
+  909  docker run -d -p 32769:80 brunoterkaly/php-bootstrap
+  910  docker ps
+  911  docker-machine ip brunodocker
+  912  clear
+  913  docker-machine ip brunodocker
+  914  history > test.txt
+  915  vim test.txt
+  916  exit
+  917  sudo -s
+  918  exit
+  919  history
+  920  clear
+  921  docker ps
+  922  docker-machine ls
+  923  docker env brunodocker
+  924  docker-machine env brunodocker
+  925  docker ps
+  926  clear
+  927  docker-machine ssh brunodocker
+  928  clear
+  929  docker run --rm swarm create
+  930  vim clusterid.txt
+  931  fg
+  932  cat clusterid.txt 
+  933  clear
+  934  azure vm docker create swarm-master -l "East US" -e 22 swarmmaster azureuser SwarmP@ssw0rd!
+  935  azure vm docker create
+  936  azure vm docker create --help
+  937  azure vm image list
+  938  azure vm image list | grep ubuntu
+  939  azure vm image list | grep -i ubuntu
+  940  sudo -s
+  941  azure vm image list | grep ubuntu|less
+  942  azure vm image list | grep ubuntu | more
+  943  azure vm image list | grep Ubuntu | less
+  944  azure vm image list | grep Canonical | less
+  945  azure vm image list | grep wiley.*Canonical | less
+  946  azure vm image list | grep "wiley.*Canonical" | less
+  947  azure vm image list | grep -i "wil.*Canonical" | less
+  948  azure vm image list | grep -i "wil.*Canonical" | awk {'print $3'}
+  949  azure vm image list | grep -i "wil.*Canonical" | awk {'print $4'}
+  950  azure vm image list | grep -i "wil.*Canonical" | awk {'print $2'}
+  951  azure vm image list | grep -i "wily.*Canonical" | awk {'print $2'}
+  952  clear
+  953  azure vm docker create swarm-master -l "East US" -e 22 b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-wily-15_10-amd64-server-20160105.1-en-us-30GB azureuser SwarmP@ssw0ra0z0udrm -r /container_logs/
+  954  clear
+  955  MYIMAGE="b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-wily-15_10-amd64-server-20160105.1-en-us-30GB"
+  956  echo $MYIMAGE
+  957  exit
+  958  exit
+  959  clear
+  960  MYIMAGE="b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-wily-15_10-amd64-server-20160105.1-en-us-30GB"
+  961  clear
+  962  MYIMAGE="b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-wily-15_10-amd64-server-20160105.1-en-us-30GB"
+  963  azure vm docker create swarm-master -l "East US" -e 22 $MYIMAGE azureuser SwarmP@ssw0rd!
+  964  clear
+  965  MYIMAGE="b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu_DAILY_BUILD-wily-15_10-amd64-server-20160105.1-en-us-30GB"
+  966  azure vm docker create bt-swarm-master -l "East US" -e 22 $MYIMAGE azureuser SwarmP@ssw0rd!
+  967  azure vm docker create bt-swarm-node-1 -l "East US" -e 22 $MYIMAGE azureuser SwarmP@ssw0rd!
+  968  clear
+  969  azure vm docker create bt-swarm-node-2 -l "East US" -e 22 $MYIMAGE azureuser SwarmP@ssw0rd!
+  970  clear
+  971  azure vm docker create bt-swarm-node-3 -l "East US" -e 22 $MYIMAGE azureuser SwarmP@ssw0rd!
+  972  sudo -s
+  973  clear
+  974  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 run --rm swarm create
+  975  history
+  976  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 images
+  977  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 ps
+  978  clear
+  979  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 images
+  980  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 ps
+  981  sudo -s
+  982  clear
+  983  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 images
+  984  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 ps
+  985  docker-machine --help
+  986  docker-machine rm bt-swarm-node-2
+  987  cat build_swarm_nodes.sh 
+  988  # Swarm Master
+  989  docker-machine create  -d azure  --azure-subscription-id=$SUBSCRIPTIONID  --azure-subscription-cert="mycert.pem" bt-swarm-master
+  990  # Swarm Node 1
+  991  docker-machine create  -d azure  --azure-subscription-id=$SUBSCRIPTIONID  --azure-subscription-cert="mycert.pem" bt-swarm-node-1
+  992  # Swarm Node 2
+  993  docker-machine create  -d azure  --azure-subscription-id=$SUBSCRIPTIONID  --azure-subscription-cert="mycert.pem" bt-swarm-node-2
+  994  docker-machine rm --force bt-swarm-manager
+  995  history
+  996  azure vm endpoint list swarm-node-1
+  997  azure vm endpoint list bt-swarm-node-1
+  998  ping bt-swarm-node-1.cloudapp.net
+  999  azure vm
+ 1000  azure vm public-ip
+ 1001  azure vm public-ip set
+ 1002  clear
+ 1003  azure vm public-ip set bt-swarm-node-1 node1-ip
+ 1004  azure vm public-ip set bt-swarm-node-2 node2-ip
+ 1005  azure vm public-ip set bt-swarm-node-3 node3-ip
+ 1006  clear
+ 1007  azure vm public-ip
+ 1008  azure vm public-ip list
+ 1009  azure vm public-ip list --help
+ 1010  azure vm public-ip list bt-swarm-node-1
+ 1011  azure vm public-ip 
+ 1012  azure vm show
+ 1013  azure vm show bt-swarm-node-1
+ 1014  azure vm show bt-swarm-node-1|grep "Public IP address" | awk -F ":" '{print $3}'
+ 1015  azure vm show bt-swarm-node-1|grep "Public IP address
+ 1016  azure vm show bt-swarm-node-1|grep "Public IP address"
+ 1017  azure vm list | grep swarm
+ 1018  history | grep "docker.*mach.*cre"
+ 1019  history > test.txt
+ 1020  vim test.txt
+ 1021  azure 
+ 1022  azure account
+ 1023  azure account show
+ 1024  azure vm delete bt-swarm-master
+ 1025  azure vm delete -help
+ 1026  fg
+ 1027  vim clean.sh
+ 1028  fg
+ 1029  bash clean.sh
+ 1030  clear
+ 1031  SUBSCRIPTIONID="c884f3c1-c74f-4898-9e40-6ebd1e42fa28"# Sw0ar0m Ma
+ 1032  StUeBrS
+ 1033  clear
+ 1034  vim build_swarm_nodes.sh
+ 1035  bash build_swarm_nodes.sh 
+ 1036  azure
+ 1037  azure service delete -q bt-swarm-node-2
+ 1038  azure vm delete -q bt-swarm-node-2
+ 1039  azure service delete -q bt-swarm-node-2
+ 1040  azure vm delete -q bt-swarm-node-3
+ 1041  azure service delete -q bt-swarm-node-3
+ 1042  clear
+ 1043  bash build_swarm_nodes.sh 
+ 1044  vim cleanup.sh
+ 1045  bash cleanup.sh
+ 1046  docker-machine rm
+ 1047  vim cleanup.sh 
+ 1048  bash cleanup.sh
+ 1049  docker-machine rm
+ 1050  vim cleanup.sh 
+ 1051  bash cleanup.sh
+ 1052  vim cleanup.sh
+ 1053  bash cleanup.sh
+ 1054  docker-machine -D regenerate-certs 
+ 1055  docker-machine -D regenerate-certs -help
+ 1056  docker-machine -D regenerate-certs btdocker
+ 1057  docker-machine ls
+ 1058  docker-machine -D regenerate-certs bt-swarm-master
+ 1059  # Create Swarm Master Node
+ 1060  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 run --rm swarm create
+ 1061  docker-machine -D regenerate-certs localhost
+ 1062  sudo -s
+ 1063  bash build_swarm_nodes.sh 
+ 1064  history
+ 1065  azure vm endpoint list swarm-node-1
+ 1066  azure vm endpoint list bt-swarm-node-1
+ 1067  clear
+ 1068  # Create Swarm Master Node
+ 1069  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 run --rm swarm create
+ 1070  ls
+ 1071  ls -ltr
+ 1072  clear
+ 1073  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 run --rm swarm create
+ 1074  sudo -s
+ 1075  clear
+ 1076  openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
+ 1077  openssl pkcs12 -export -out mycert.pfx -in mycert.pem -name "MyCertificate"
+ 1078  openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
+ 1079  clear
+ 1080  196
+ 1081  clear
+ 1082  # Create Swarm Master Node
+ 1083  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 run --rm swarm create
+ 1084  ls cl*
+ 1085  cat cleanup.sh 
+ 1086  bash clean.sh
+ 1087  cat clean.sh
+ 1088  bash cleanup.sh 
+ 1089  ls -ltr
+ 1090  bash build_swarm_nodes.sh 
+ 1091  cat build_swarm_nodes.sh 
+ 1092  docker-machine
+ 1093  docker-machine ssh bt-swarm-node-2
+ 1094  docker-machine upgrade bt-swarm-node-1
+ 1095  clear
+ 1096  docker-machine upgrade bt-swarm-node-2
+ 1097  cat build_swarm_nodes.sh 
+ 1098  docker-machine create  -d azure  --azure-subscription-id=$SUBSCRIPTIONID  --azure-subscription-cert="mycert.pem" bt-swarm-node-2
+ 1099  docker-machine upgrade bt-swarm-node-2
+ 1100  vim cleanup.sh
+ 1101  cp cleanup.sh cleanupnode.sh
+ 1102  vim cleanupnode.sh 
+ 1103  :q
+ 1104  bash cleanupnode.sh 1
+ 1105  bash cleanupnode.sh 2
+ 1106  docker-machine ls
+ 1107  bash cleanupnode.sh 3
+ 1108  bash build.sh 2
+ 1109  docker-machine bt-swarm-node-2
+ 1110  docker-machine ssh bt-swarm-node-2
+ 1111  sudo -s
+ 1112  bash build.sh 3
+ 1113  ls -ltr
+ 1114  date
+ 1115  docker-machine status bt-swarm-node-3
+ 1116  docker-machine status bt-swarm-master
+ 1117  docker-machine status 
+ 1118  docker-machien
+ 1119  docker-machine
+ 1120  docker-machine status bt-swarm-node-1
+ 1121  ls -ltr
+ 1122  copy build_swarm_nodes.sh build.sh
+ 1123  cp build_swarm_nodes.sh build.sh
+ 1124  vim build
+ 1125  vim builds.h
+ 1126  vim build.sh
+ 1127  bash build.sh 1
+ 1128  docker-machine ls
+ 1129  clear
+ 1130  docker-machine ls
+ 1131  azure vm list endpoint bt-swarm-node-1
+ 1132  azure vm endpoint list bt-swarm-node-1
+ 1133  clear
+ 1134  azure vm endpoint list bt-swarm-node-1
+ 1135  cat clusterid.txt 
+ 1136  docker-machine inspect bt-swarm-master
+ 1137  clear
+ 1138  # Create Swarm Master Node
+ 1139  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 run --rm swarm create
+ 1140  sudo -s
+ 1141  docker-machine restart bt-swarm-master
+ 1142  docker-machine ls
+ 1143  docker-machine -D regenerate-certs bt-swarm-master
+ 1144  docker --tls -H tcp://bt-swarm-master.cloudapp.net:2376 run --rm sw
+ 1145  docker-machine inspect bt-swarm-master
+ 1146  docker-machine
+ 1147  docker-machine status bt-swarm-master
+ 1148  docker-machine ssh bt-swarm-master
+ 1149  docker-machine ssh bt-swarm-master service docker restart 
+ 1150  get clone https://github.com/Azure/azure-quickstart-templates.git
+ 1151  git clone https://github.com/Azure/azure-quickstart-templates.git
+ 1152  cd azure-quickstart-templates/
+ 1153  ls *mesos*
+ 1154  ls -ltr|more
+ 1155  cd mesos-swarm-marathon/
+ 1156  ls
+ 1157  ls *.sh
+ 1158  vim configure-ubuntu.sh 
+ 1159  ls -ltr
+ 1160  vim configure-mesos-cluster.sh 
+ 1161  vim azuredeploy.json
+ 1162  vim azuredeploy.parameters.json 
+ 1163  history "azure group"
+ 1164  history | grep "azure group"
+ 1165  vim run.sh
+ 1166  bash run.sh
+ 1167  azure config mode arm
+ 1168  bash run.sh
+ 1169  vim run.sh
+ 1170  bash run.sh
+ 1171  clear
+ 1172  docker run swarm create
+ 1173  docker-machine create -d azure --swarm --swarm-master --swarm-discovery=token:// a8687db8343f16fabc6eaedcf195bb8c bruno-swarm-master
+ 1174  clear
+ 1175  vim build-swarm-nodes.sh
+ 1176  sudo -s
+ 1177  bash cleanup.sh 
+ 1178  cat cleanup
+ 1179  cat cleanup.sh
+ 1180  bash cleanup.sh
+ 1181  vim cleanup.sh
+ 1182  azure vm delete 
+ 1183  azure vm delete  -help
+ 1184  vim cleanup.sh
+ 1185  clear
+ 1186  docker-machine create -d azure --swarm --swarm-master --swarm-discovery=token://a8687db8343f16fabc6eaedcf195bb8c bt-swarm-master
+ 1187  clear
+ 1188  docker-machine create -d azure --azure-subscription-id="c884f3c1-c74f-4898-9e40-6ebd1e42fa28"  --azure-subscription-cert="mycert.pem" --swarm --swarm-master --swarm-discovery=token://a8687db8343f16fabc6eaedcf195bb8c bt-swarm-master
+ 1189  clear
+ 1190  cat cal*
+ 1191  cat cla*
+ 1192  cat clea*
+ 1193  ls cl*
+ 1194  bash cleanupnode.sh 1
+ 1195  cp build-swam-nodes.sh build-node.sh
+ 1196  vim build-node.sh 
+ 1197  mv build-node.sh build-swarm-node.sh
+ 1198  bash build-swarm-node.sh 1
+ 1199  sudo -s
+ 1200  clear
+ 1201  cat build-swarm-nodes.sh 
+ 1202  clear
+ 1203  cat build-swarm-nodes.sh 
+ 1204  bash build-swarm-nodes.sh 
+ 1205  clear
+ 1206  rm build-swarm-nodes.sh 
+ 1207  clear
+ 1208  vim build-swarm-nodes.sh
+ 1209  clear
+ 1210  vim build-swarm-nodes.sh
+ 1211  clear
+ 1212  vim build-swarm-nodes.sh
+ 1213  clear
+ 1214  vim build-swam-nodes.sh
+ 1215  bash build-swam-nodes.sh 
+ 1216  docker-machine ls
+ 1217  sudo -s
+ 1218  clear
+ 1219  #Connecting to Swarm Master and running commands
+ 1220  $(docker-machine env --swarm swarm-master)
+ 1221  clear
+ 1222  docker-machine ls
+ 1223  #Connecting to Swarm Master and running commands
+ 1224  $(docker-machine env --swarm bt-swarm-master)
+ 1225  clear
+ 1226  #Connecting to Swarm Master and running commands
+ 1227  docker-machine env --swarm bt-swarm-master
+ 1228  sudo -s
+ 1229  clear
+ 1230  cat dockder-compose.yml
+ 1231  docker-compose
+ 1232  clear
+ 1233  vim docker-compose.yml
+ 1234  ls -ltr docker-compose.yml 
+ 1235  ls
+ 1236  clear
+ 1237  docker-compose up -d
+ 1238  clear
+ 1239  docker-compose ps
+ 1240  docker ps
+ 1241  clear
+ 1242  docker-compose
+ 1243  clear
+ 1244  #  Detached mode: Run containers in the background, print new container names.
+ 1245  # Start a folding-at-home worker in Swarm.      
+ 1246  docker-compose up -d
+ 1247  docker-compose
+ 1248  docker-compose stop
+ 1249  clear
+ 1250  #  Detached mode: Run containers in the background, print new container names.
+ 1251  # Start a folding-at-home worker in Swarm.      
+ 1252  docker-compose up -d
+ 1253  # List containers
+ 1254  docker-compose ps
+ 1255  # List all containers running in Swarm
+ 1256  docker ps
+ 1257  # Create 10 copies of our worker in our swarm
+ 1258  docker-compose scale worker=10
+ 1259  # Viewing all the workers running on different nodes in the swarm
+ 1260  docker ps
+ 1261  # Viewing all the workers running on different nodes in the swarm
+ 1262  docker-compose ps
+ 1263  docker ps
+ 1264  docker logs
+ 1265  docker-compose logs
+ 1266  docker-compose stop
+ 1267  docker-compose ls
+ 1268  docker-machine ls
+ 1269  docker-compose stop
+ 1270  docker ps
+ 1271  #Connecting to Swarm Master and running commands
+ 1272  docker-machine env --swarm bt-swarm-master
+ 1273  #  Detached mode: Run containers in the background, print new container names.
+ 1274  # Start a folding-at-home worker in Swarm.      
+ 1275  docker-compose up -d
+ 1276  docker ps
+ 1277  docker-compose ps
+ 1278  docker-compose up -d
+ 1279  docker-compose ls
+ 1280  docker-compose ps
+ 1281  docker-compose scale worker=10
+ 1282  export COMPOSE_HTTP_TIMEOUT=300
+ 1283  $COMPOSE_HTTP_TIMEOUT
+ 1284  ECHO $COMPOSE_HTTP_TIMEOUT
+ 1285  echo $COMPOSE_HTTP_TIMEOUT
+ 1286  docker-compose scale worker=3
+ 1287  docker-composeps
+ 1288  docker-compose ps
+ 1289  docker-compose stop
+ 1290  docker-compose ps
+ 1291  docker ps
+ 1292  docker-compose scale worker=3
+ 1293  docker-compose stop
+ 1294  docker-compose
+ 1295  docker-compose ps
+ 1296  docker-compose rm
+ 1297  clear
+ 1298  #  Detached mode: Run containers in the background, print new container names.
+ 1299  # Start a folding-at-home worker in Swarm.      
+ 1300  docker-compose up -d
+ 1301  docker-compose ps
+ 1302  # List all containers running in Swarm
+ 1303  docker ps
+ 1304  clear
+ 1305  # Create 10 copies of our worker in our swarm
+ 1306  clear
+ 1307  export COMPOSE_HTTP_TIMEOUT=300
+ 1308  # Create 3 copies of our worker in our swarm
+ 1309  docker-compose scale worker=3
+ 1310  docker-compose ls
+ 1311  docker-compose ps
+ 1312  docker-compose stop
+ 1313  docker-compose ps
+ 1314  docker-compose rm
+ 1315  docker-compose ps
+ 1316  clear
+ 1317  docker ps
+ 1318  clear
+ 1319  export COMPOSE_HTTP_TIMEOUT=300
+ 1320  clear
+ 1321  export COMPOSE_HTTP_TIMEOUT=300
+ 1322  #  Detached mode: Run containers in the background, print new container names.
+ 1323  # Start a folding-at-home worker in Swarm.      
+ 1324  docker-compose up -d
+ 1325  # List containers
+ 1326  docker-compose ps
+ 1327  # Create 3 copies of our worker in our swarm
+ 1328  docker-compose stop
+ 1329  docker-compose rm
+ 1330  docker-compose ps
+ 1331  clear
+ 1332  export COMPOSE_HTTP_TIMEOUT=300
+ 1333  #  Detached mode: Run containers in the background, print new container names.
+ 1334  # Start a folding-at-home worker in Swarm.      
+ 1335  docker-compose up -d
+ 1336  # List containers
+ 1337  docker-compose ps
+ 1338  clear
+ 1339  # Create 3 copies of our worker in our swarm
+ 1340  docker-compose scale worker=3
+ 1341  docker-compose ps
+ 1342  docker-compose logs
+ 1343  docker ps
+ 1344  clear
+ 1345  docker-compose
+ 1346  set
+ 1347  env
+ 1348  docker-compose ps
+ 1349  clear
+ 1350  docker-compose scale worker=2
+ 1351  docker-compose ps
+ 1352  sudo -s
+ 1353  ls -ltr
+ 1354  cd azure-quickstart-templates/
+ 1355  ls
+ 1356  ls *mesos*
+ 1357  cat run.sh
+ 1358  cd mesos-swarm-marathon/
+ 1359  ls
+ 1360  cat run.sh 
+ 1361  azure group delete btmesosrg
+ 1362  cd ~
+ 1363  azure config mode arm
+ 1364  azure vm list
+ 1365  azure vm list stop.sh
+ 1366  vim stop.sh
+ 1367  azure vm list > stop.sh
+ 1368  vim stop.sh
+ 1369  bash stop.sh
+ 1370  azure vm stop -help
+ 1371  vim stop.sh
+ 1372  bash stop.sh
+ 1373  ls
+ 1374  vim stop.sh
+ 1375  bash stop.sh
+ 1376  sudo -s
+ 1377  ls
+ 1378  cd php
+ 1379  ls
+ 1380  vim Dockerfile 
+ 1381  cd php
+ 1382  ls -ltr
+ 1383  apt-get install tree
+ 1384  tree .
+ 1385  tree > ~/tree.txt
+ 1386  cd php
+ 1387  ls
+ 1388  docker images
+ 1389  docker push brunoterkaly/php-bootstrap
+ 1390  clear
+ 1391  docker login
+ 1392  clear
+ 1393  docker login
+ 1394  docker push brunoterkaly/php-bootstrap
+ 1395  python get-pip.py
+ 1396  apt-get update && apt-get -y install python-pip
+ 1397  pip --help
+ 1398  ls
+ 1399  history
+ 1400  pip --help
+ 1401  pip install virtualenv
+ 1402  wget https://downloads.mesosphere.io/dcos-cli/install.ps1
+ 1403  .\install.ps1 . http://23.99.88.121
+ 1404  ls -ltr
+ 1405  ls ins*
+ 1406  bash .\install.ps1 . http://23.99.88.121
+ 1407  clear
+ 1408  bash install.ps1 . http://23.99.88.121
+ 1409  vim install.ps1 
+ 1410  clear
+ 1411  bash install.ps1  http://23.99.88.121
+ 1412  bash install.ps1 http://23.99.88.121
+ 1413  bash install.ps1 . http://23.99.88.121
+ 1414  mkdir dcos
+ 1415  cd dcos/
+ 1416  curl -O http://downloads.mesosphere.com/dcos-cli/install.sh
+ 1417  bash install.sh . http://23.99.88.121
+ 1418  dcos
+ 1419  dcos --help
+ 1420  source ~/.bashrc
+ 1421  dcos --help
+ 1422  clear
+ 1423  source ~/.bashrc
+ 1424  dcos --help
+ 1425  dcos package install kafka
+ 1426  dcos kafka broker add 0
+ 1427  java
+ 1428  apt-get install default-jre
+ 1429  clear
+ 1430  dcos kafka broker add 0
+ 1431  dcos kafka broker start 0
+ 1432  clear
+ 1433  dcos package install spark
+ 1434  clear
+ 1435  dcos package update
+ 1436  dcos package install kubernetes
+ 1437  dcos package update
+ 1438  dcos package install kubernetes
+ 1439  sudo -s
+ 1440  cd dcos
+ 1441  clear
+ 1442  dcos config prepend package.sources https://github.com/mesosphere/multiverse/archive/version-1.x.zip
+ 1443  dcos package update
+ 1444  dcos package install kubernetes
+ 1445  dcos kubectl
+ 1446  clear
+ 1447  dcos kubectl
+ 1448  clear
+ 1449  git clone https://github.com/mesosphere/time-series-demo.git
+ 1450  cd time-series-demo/
+ 1451  ls
+ 1452  clear
+ 1453  dcos marathon app add online/marathon-influxdb.json
+ 1454  ls -ltr
+ 1455  cd online/
+ 1456  ls
+ 1457  cd ..
+ 1458  sudo -s
+ 1459  clear
+ 1460  curl -O https://downloads.mesosphere.io/dcos-cli/install.sh &&   bash ./install.sh . http://104.45.230.255 &&   source ./bin/env-setup
+ 1461  source ~/.bashrc && dcos help
+ 1462  dcos package install kafka
+ 1463  dcos kafka broker add 0
+ 1464  dcos kafka broker start 0
+ 1465  clear
+ 1466  dcos package install spark
+ 1467  dcos config prepend package.sources https://github.com/mesosphere/multiverse/archive/version-1.x.zip
+ 1468  dcos package update
+ 1469  clear
+ 1470  dcos package install kubernetes
+ 1471  clear
+ 1472  dcos kubectl
+ 1473  clear
+ 1474  git clone https://github.com/mesosphere/time-series-demo.git
+ 1475  cd time-series-demo/
+ 1476  dcos marathon app add online/marathon-influxdb.json
+ 1477  history
+ 1478  sudo -s
+ 1479  cd dcos
+ 1480  ls
+ 1481  cd time-series-demo/
+ 1482  ls
+ 1483  clear
+ 1484  ls
+ 1485  clear
+ 1486  dcos marathon app add onlin/marathon-grafana.json
+ 1487  clear
+ 1488  cd dcos/time-series-demo/
+ 1489  clear
+ 1490  dcos marathon app add online/marathon-grafana.json
+ 1491  cd crime-data-producer/
+ 1492  ls -ltr
+ 1493  vim marathon-cdp.json 
+ 1494  dcos spark run --submit-args='-Dspark.mesos.coarse=true --class mesosphere.tsproc.TSProc https://azure-blob-of-jar-dependencies-file.jar leader.mesos aconsumergoup crime 104.45.224.40:3382 secret-key secret-key2'
+ 1495  clearclearellasdfslaf
+ 1496  clear
+ 1497  dsfksdafksdfk
+ 1498  dfldsflasdf
+ 1499  clear
+ 1500  dcos spark run --submit-args='-Dspark.mesos.coarse=true --class mesosphere.tsproc.TSProc http://mesosphere.blob.core.windows.net/dependencies/tsdemo-time-series.jar leader.mesos aconsumergoup crime 104.45.224.40:3382 secret-key secret-key2'
+ 1501  clear
+ 1502  dcos spark run --submit-args='-Dspark.mesos.coarse=true --class mesosphere.tsproc.TSProc https://s3-us-west-2.amazonaws.com/mesosphere-tsdemo/tsdemo-1.0-SNAPSHOT-jar-with-dependencies.jar leader.mesos aconsumergoup crime 104.45.224.40:3382 secret-key secret-key2'
+ 1503  dcos marathon app add marathon-cdp.json
+ 1504  clear
+ 1505  ping 104.45.224.40
+ 1506  history
+ 1507  dcos spark kill driver-20160120233122-0003
+ 1508  dcos spark run --submit-args='-Dspark.mesos.coarse=true --class mesosphere.tsproc.TSProc https://s3-us-west-2.amazonaws.com/mesosphere-tsdemo/tsdemo-1.0-SNAPSHOT-jar-with-dependencies.jar leader.mesos aconsumergoup crime 104.45.224.40:16170 secret-key secret-key2'
+ 1509  dcos spark kill driver-20160120235943-0004
+ 1510  dcos spark run --submit-args='-Dspark.mesos.coarse=true --class mesosphere.tsproc.TSProc https://s3-us-west-2.amazonaws.com/mesosphere-tsdemo/tsdemo-1.0-SNAPSHOT-jar-with-dependencies.jar leader.mesos aconsumergoup crime 104.45.224.40:16170 secret-key secret-key2'
+ 1511  CLEAR
+ 1512  clear
+ 1513  cd ~
+ 1514  clear
+ 1515  sudo -s
+ 1516  azure vm list
+ 1517  azure vm list > do.sh
+ 1518  vim do.sh
+ 1519  bash do.sh
+ 1520  azure vm stop
+ 1521  vim do.sh
+ 1522  bash do.sh
+ 1523  cat do.sh
+ 1524  azure vm stop -help
+ 1525  bash do.sh
+ 1526  docker
+ 1527  sudo -s
+ 1528  clear
+ 1529  sudo -s
+ 1530  docker run -d -p 32768:8080 tomcat:latest
+ 1531  docker run -d -p 32769:80 my-php-app
+ 1532  docker images
+ 1533  ls -ltr
+ 1534  grep my-php *
+ 1535  find . -name "docker*"
+ 1536  find . -name "dockerfile"
+ 1537  find / -name "dockerfile"
+ 1538  docker build -t my-php-app
+ 1539  cd src
+ 1540  cd php
+ 1541  ls
+ 1542  docker build -t my-php-app
+ 1543  ls -ltr
+ 1544  docker build -t my-php-app .
+ 1545  hitory | grep run
+ 1546  history | grep run
+ 1547  docker run -d -p 32769:80 my-php-app
+ 1548  cd php
+ 1549  clear
+ 1550  history | grep docker push
+ 1551  history
+ 1552  history | grep docker.*push
+ 1553  docker push brunoterkaly/php-bootstrap
+ 1554  history > test.txt
